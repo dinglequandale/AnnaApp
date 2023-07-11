@@ -94,11 +94,9 @@ public class LoginActivity extends AppCompatActivity {
     private void openRegister(){
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
-        finish();
     }
     private void openMain(){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
-        finish();
     }
 }

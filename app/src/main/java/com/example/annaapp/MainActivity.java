@@ -1,7 +1,10 @@
 package com.example.annaapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
@@ -25,31 +28,36 @@ import com.example.annaapp.databinding.ActivityMainBinding;
 import java.sql.Array;
 import java.util.ArrayList;
 
+//TODO: URLs to ImageViews:
+// Picasso.with(context)
+//                .load(ImageURL)
+//                .resize(width,height).into(imageView);
+
+
 public class MainActivity extends AppCompatActivity {
     MyApplication myApplication = (MyApplication) this.getApplication();
-
+    ArrayList<ShowModel> showModels;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    ArrayList<ShowModel> showModels = new ArrayList<>();;
-    //TODO:GLOBAL VARIABLE
+
+    public static final String PREFS_NAME = "MyPrefsFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences showModels_saved = getSharedPreferences(PREFS_NAME,0);
         super.onCreate(savedInstanceState);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, AddorEditShow.class);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -64,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        fillShowModel();
+        //TODO: Check if this works
+        showModels = myApplication.getShowModels();
 
         recyclerView = findViewById(R.id.rvShows);
         recyclerView.setHasFixedSize(true);
@@ -99,13 +108,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    public void fillShowModel(){
-        //TODO:GLOBAL VARIABLE
-        ShowModel show1 = new ShowModel("Show Name", "Crew Name","MM/DD","MM/DD");
-        ShowModel show2 = new ShowModel("The Fortniters", "The Joneseys","09/20","10/5");
-        showModels.add(show1);
-        showModels.add(show2);
-    }
-
 }
