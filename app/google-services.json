@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "556251282291",
+    "project_id": "login-register-firebase-5c559",
+    "storage_bucket": "login-register-firebase-5c559.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:556251282291:android:7cd255b47232645a51e306",
+        "android_client_info": {
+          "package_name": "com.example.annaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "556251282291-8k8i3pfkgosd5q4jrbf5pl1ega9fdlj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP0aSI_FuIQZRRA0_3XlFvvzUnkP2BCbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "556251282291-8k8i3pfkgosd5q4jrbf5pl1ega9fdlj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

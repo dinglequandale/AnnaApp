@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcomeCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/grey"
+        app:cardCornerRadius="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="117dp">
+
+            <TextView
+                android:id="@+id/var_showName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helveticaroundedbold"
+                android:text="Show Name"
+                android:textSize="38sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.439"
+                app:layout_constraintStart_toEndOf="@+id/var_imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.222" />
+
+            <ImageView
+                android:id="@+id/var_imageView2"
+                android:layout_width="124dp"
+                android:layout_height="111dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_square"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/var_crewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crew Name"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.479"
+                app:layout_constraintStart_toEndOf="@+id/var_imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.642" />
+
+            <TextView
+                android:id="@+id/var_date2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="60dp"
+                android:text="MM/DD"
+                app:layout_constraintBottom_toBottomOf="@+id/date1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/date1"
+                app:layout_constraintTop_toTopOf="@+id/date1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/date1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:text="MM/DD"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/var_imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.969" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                app:layout_constraintBottom_toBottomOf="@+id/var_date2"
+                app:layout_constraintEnd_toStartOf="@+id/var_date2"
+                app:layout_constraintStart_toEndOf="@+id/date1"
+                app:layout_constraintTop_toTopOf="@+id/date1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

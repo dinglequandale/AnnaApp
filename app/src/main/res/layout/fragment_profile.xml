@@ -4,23 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.profile.ProfileFragment"
+    android:id="@+id/nav_profile">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
 
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/text_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:text="@string/user_profile"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"
+        android:text="@string/log_out"
+        android:backgroundTint="@color/purple_800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/text_profile"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/text_profile"
+        app:layout_constraintTop_toBottomOf="@+id/text_profile"
+        app:layout_constraintVertical_bias="0.864" />
 </androidx.constraintlayout.widget.ConstraintLayout>

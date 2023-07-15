@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 //TODO: TEST THE EMULATOR WITH SWAPPED STARTING PAGES
@@ -29,7 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText edtEmail;
     private Button btnRegister;
     private EditText confirmPassword;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
+
+
     private ProgressBar progressBar;
 
     public void onStart() {
@@ -55,37 +62,40 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = String.valueOf(edtEmail.getText());
-                String password = String.valueOf(edtPassword.getText());
-                String confirmation = String.valueOf(confirmPassword.getText());
+                String email = edtEmail.getText().toString();
+                String password = edtPassword.getText().toString();
+                String confirmation = confirmPassword.getText().toString();
 
                 progressBar.setVisibility(View.VISIBLE);
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
-                if (TextUtils.isEmpty(confirmation)){
+                if(Integer.parseInt(confirmation) != Integer.parseInt(password)){
                     Toast.makeText(RegisterActivity.this, "Confirm your password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password)
+                mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful() && confirmation.equals(password)) {
-                                    // Sign in success, update UI with the signed-in user's information
-
+                                if (task.isSuccessful()) {
                                     // Only for registration
                                     // FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(RegisterActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                                     openMain();
+
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.",
@@ -108,6 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void openLogin(){
         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
     private void openMain(){
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);

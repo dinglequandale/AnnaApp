@@ -42,27 +42,30 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        noAccountBtn = findViewById(R.id.noAccountBtn);
-        btnLogin = findViewById(R.id.login);
+        noAccountBtn = findViewById(R.id.existingAccountBtn);
+        btnLogin = findViewById(R.id.regjster);
         edtPassword = findViewById(R.id.password2);
         edtEmail = findViewById(R.id.email2);
+        progressBar =findViewById(R.id.progressBar_login);
         mAuth = FirebaseAuth.getInstance();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email,password;
-                email = String.valueOf(edtEmail.getText());
-                password = String.valueOf(edtPassword.getText());
+                email = edtEmail.getText().toString();
+                password = edtPassword.getText().toString();
 
                 progressBar.setVisibility(View.VISIBLE);
 
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(LoginActivity.this, "Please enter an email", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(LoginActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
                 mAuth.signInWithEmailAndPassword(email, password)
