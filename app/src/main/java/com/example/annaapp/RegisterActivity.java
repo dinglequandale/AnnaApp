@@ -71,17 +71,14 @@ public class RegisterActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    return;
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    return;
                 }
                 if(Integer.parseInt(confirmation) != Integer.parseInt(password)){
                     Toast.makeText(RegisterActivity.this, "Confirm your password", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    return;
                 }
 
                 mAuth.createUserWithEmailAndPassword(email, password)

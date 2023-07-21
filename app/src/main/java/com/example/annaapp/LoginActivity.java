@@ -61,12 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(LoginActivity.this, "Please enter an email", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    return;
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(LoginActivity.this, "Please enter a password", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
-                    return;
                 }
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {

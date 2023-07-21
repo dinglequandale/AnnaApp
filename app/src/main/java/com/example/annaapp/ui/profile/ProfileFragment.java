@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
-    View view;
     private FragmentProfileBinding binding;
     private FirebaseAuth auth = FirebaseAuth.getInstance();;
     private FirebaseUser user = auth.getCurrentUser();;
@@ -29,8 +28,18 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_profile, container, false);
-        btnLogout = view.findViewById(R.id.btnLogout);
+
+        ProfileViewModel profileViewModel =
+                new ViewModelProvider(this).get(ProfileViewModel.class);
+
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        final TextView textView = binding.textProfile;
+        profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+
+        btnLogout = root.findViewById(R.id.btnLogout);
 
         if (user == null){
             openLogin();
@@ -47,14 +56,6 @@ public class ProfileFragment extends Fragment {
                 openLogin();
             }
         });
-        ProfileViewModel profileViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
-
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-
-        final TextView textView = binding.textProfile;
-        profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
 
     }

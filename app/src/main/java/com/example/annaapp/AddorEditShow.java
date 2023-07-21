@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.annaapp.ui.home.HomeFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
@@ -94,6 +95,39 @@ public class AddorEditShow extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
+                if ((String.valueOf(edtShowName.getText())).equals("")
+                        || (String.valueOf(edtCrewName.getText())).equals("")) {
+                    Toast.makeText(AddorEditShow.this, "There is missing info", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (edtDate1.getText().toString().contains("/")) {
+                    try{
+                        int date1Slash = (edtDate1.getText().toString()).indexOf("/");
+                        Integer.parseInt(edtDate1.getText().toString().substring(0, date1Slash)
+                                + edtDate1.getText().toString().substring(date1Slash+1));
+                    }catch (NumberFormatException e){
+                        Toast.makeText(AddorEditShow.this, "\"Invalid date format. Day and month must be numbers.", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+                }
+                if (edtDate2.getText().toString().contains("/")) {
+                    try{
+                        int date2Slash = (edtDate2.getText().toString()).indexOf("/");
+                        Integer.parseInt(edtDate2.getText().toString().substring(0, date2Slash)
+                                + edtDate2.getText().toString().substring(date2Slash+1));
+                    }catch (NumberFormatException e){
+                        Toast.makeText(AddorEditShow.this, "\"Invalid date format. Day and month must be numbers.", Toast.LENGTH_SHORT).show();
+
+                        return;
+                    }
+                }
+                else if(!(edtDate1.getText().toString().contains("/")) || !(edtDate2.getText().toString().contains("/"))) {
+                    if (!(edtDate1.getText().toString().isEmpty()) && !(edtDate2.getText().toString().isEmpty())){
+                        Toast.makeText(AddorEditShow.this, "Invalid date format. Must be of form M/D.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                }
 
                 if(editId >= 0){
                     ShowModel showReplacement;
@@ -121,13 +155,7 @@ public class AddorEditShow extends AppCompatActivity {
                     String endingDate = edtDate2.getText().toString();
 
 
-
-                    if ((String.valueOf(edtShowName.getText())).equals("")
-                            || (String.valueOf(edtCrewName.getText())).equals("")) {
-                        Toast.makeText(AddorEditShow.this, "There is missing info", Toast.LENGTH_SHORT).show();
-                    }
-
-                    else if ((String.valueOf(edtUrl.getText())).equals("")) {
+                    if ((String.valueOf(edtUrl.getText())).equals("")) {
 
                         Toast.makeText(AddorEditShow.this, "Current id:" + editId, Toast.LENGTH_LONG).show();
 

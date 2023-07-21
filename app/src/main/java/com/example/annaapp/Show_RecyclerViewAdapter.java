@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
     ArrayList<ShowModel> showModels;
 
 
-    public Show_RecyclerViewAdapter(Context context, ArrayList<ShowModel> showModels, RecyclerViewInterface  recyclerViewInterface) {
+    public Show_RecyclerViewAdapter(Context context, ArrayList<ShowModel> showModels, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.showModels = showModels;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -46,14 +47,13 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
         holder.crewName.setText(showModels.get(position).getCrewName());
         holder.date1.setText(showModels.get(position).getDate1());
         holder.date2.setText(showModels.get(position).getDate2());
-        if(TextUtils.isEmpty(showModels.get(position).getImageURL())){
+        if (TextUtils.isEmpty(showModels.get(position).getImageURL())) {
             (holder.image).setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_square));
-        }
-        else{
-            try{
+        } else {
+            try {
                 Picasso.get().load(showModels.get(position).getImageURL()).into(holder.image);
-            }catch(Exception e){
-                (holder.image).setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_square));;
+            } catch (Exception e) {
+                (holder.image).setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_square));
             }
 
         }
@@ -62,9 +62,9 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
 
     @Override
     public int getItemCount() {
-        try{
+        try {
             return showModels.size();
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return 0;
         }
 
@@ -90,16 +90,30 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(recyclerViewInterface != null){
+                    if (recyclerViewInterface != null) {
                         int position = getAdapterPosition();
 
-                        if(position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             recyclerViewInterface.onItemClick(position);
                         }
                     }
                 }
             });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (recyclerViewInterface != null) {
+                        int position = getAdapterPosition();
 
+                        if (position != RecyclerView.NO_POSITION) {
+                            recyclerViewInterface.onLongClick(position);
+                            return true;
+                        }
+
+                    }
+                    return false;
+                }
+            });
         }
     }
 }

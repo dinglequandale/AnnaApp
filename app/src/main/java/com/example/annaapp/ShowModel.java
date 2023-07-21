@@ -29,7 +29,7 @@ public class ShowModel {
         return uid;
     }
 
-    public String getShowName() {
+    public CharSequence getShowName() {
         return showName;
     }
 
