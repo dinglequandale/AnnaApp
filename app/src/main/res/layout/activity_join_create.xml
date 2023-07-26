@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinCreate"
+    android:background="@color/purple_800"
+    android:id="@+id/layoutJoinCreate">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        app:cardBackgroundColor="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186"
+        app:cardCornerRadius="40dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Logo) Kaesma"
+                android:fontFamily="@font/helveticaroundedbold"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+<!--            <View-->
+<!--                android:id="@+id/shade3"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="#80000000"-->
+<!--                android:visibility="invisible"/>-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.356"
+        app:cardBackgroundColor="@color/grey"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="267dp">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="260dp"
+                android:layout_height="38dp"
+                android:fontFamily="@font/helveticaroundedbold"
+                android:text="@string/would_you_like_to_join_an_existing_group_or_create_a_new_one"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.109" />
+
+            <Button
+                android:id="@+id/btnJoin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/join_a_show"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9"
+                app:layout_constraintVertical_bias="0.125" />
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="@string/create_a_show"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/purple_700"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btnJoin"
+                app:layout_constraintStart_toStartOf="@+id/btnJoin"
+                app:layout_constraintTop_toBottomOf="@+id/btnJoin"
+                app:layout_constraintVertical_bias="0.193" />
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/done"
+                android:backgroundTint="@color/purple_700"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.907"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.926" />
+<!--            <View-->
+<!--                android:id="@+id/shade2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="#80000000"-->
+<!--                android:visibility="invisible"/>-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <View-->
+<!--        android:id="@+id/shade1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#80000000"-->
+<!--        android:visibility="invisible"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

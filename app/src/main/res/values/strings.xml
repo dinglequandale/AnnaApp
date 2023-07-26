@@ -80,4 +80,10 @@
     <string name="profile">Profile</string>
     <string name="user_profile">User profile</string>
     <string name="log_out">Log out</string>
+    <string name="join_a_group">Join a group</string>
+    <string name="would_you_like_to_join_an_existing_group_or_create_a_new_one">Would you like to join an existing group, or create a new one?</string>
+    <string name="done">Done</string>
+    <string name="access_code">Access Code</string>
+    <string name="join_a_show">Join a show</string>
+    <string name="create_a_show">Create a show</string>
 </resources>

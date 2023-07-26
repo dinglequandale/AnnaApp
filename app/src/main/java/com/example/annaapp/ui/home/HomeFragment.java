@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.annaapp.AddorEditShow;
 
 import com.example.annaapp.DateModel;
+import com.example.annaapp.JoinCreate;
 import com.example.annaapp.R;
 import com.example.annaapp.RecyclerViewInterface;
 import com.example.annaapp.ShowModel;
@@ -42,7 +43,6 @@ import com.squareup.picasso.Picasso;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 
 public class HomeFragment extends Fragment implements RecyclerViewInterface {
 
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements RecyclerViewInterface {
         binding.appBarMain.addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddorEditShow.class);
+                Intent intent = new Intent(getActivity(), JoinCreate.class);
                 startActivity(intent);
             }
         });

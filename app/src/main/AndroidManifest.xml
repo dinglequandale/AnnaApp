@@ -17,6 +17,9 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="33">
         <activity
+            android:name=".JoinCreate"
+            android:exported="false" />
+        <activity
             android:name=".AddorEditShow"
             android:exported="false" />
         <activity

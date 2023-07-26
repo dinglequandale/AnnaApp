@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,6 +58,11 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.confirmPassword);
         mAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
+//
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("message");
+//
+//        myRef.setValue("Hello, World!");
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,14 +75,24 @@ public class RegisterActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
+                    return;
                 }
                 if(TextUtils.isEmpty(password)){
                     Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
+                    return;
                 }
+
+                if(TextUtils.isEmpty(confirmation)){
+                    Toast.makeText(RegisterActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    return;
+                }
+
                 if(Integer.parseInt(confirmation) != Integer.parseInt(password)){
                     Toast.makeText(RegisterActivity.this, "Confirm your password", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
+                    return;
                 }
 
                 mAuth.createUserWithEmailAndPassword(email, password)
@@ -88,7 +102,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Only for registration
-                                    // FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    String uid = user.getUid();
+                                    addUserToDatabase(uid, email, password);
                                     Toast.makeText(RegisterActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                                     openMain();
 
@@ -121,5 +137,15 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+    public void addUserToDatabase(String uid, String email, String password) {
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+
+        Map<String, Object> userData = new HashMap<>();
+        userData.put("email", email);
+        userData.put("password", password);
+        // Add other user-specific data here if needed
+
+        usersRef.child(uid).updateChildren(userData);
     }
 }
