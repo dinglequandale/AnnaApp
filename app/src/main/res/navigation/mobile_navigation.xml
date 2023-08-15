@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_mover">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.annaapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/nav_mover"
+        android:name="com.example.annaapp.ui.mover_homepage.MoverFragment"
+        android:label="Mover"
+        tools:layout="@layout/fragment_mover">
 
         <!-- Add the action to navigate to the profile destination -->
 
@@ -21,8 +21,8 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.annaapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_manager"
+        android:name="com.example.annaapp.ui.manager_homepage.ManagerFragment"
+        android:label="Manager"
+        tools:layout="@layout/fragment_manager" />
 </navigation>

@@ -3,6 +3,7 @@ package com.example.annaapp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.DragEvent;
 import android.view.LayoutInflater;
@@ -16,7 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -25,6 +32,8 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
     private final RecyclerViewInterface recyclerViewInterface;
     Context context;
     ArrayList<ShowModel> showModels;
+
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
     public Show_RecyclerViewAdapter(Context context, ArrayList<ShowModel> showModels, RecyclerViewInterface recyclerViewInterface) {
@@ -47,17 +56,12 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
         holder.crewName.setText(showModels.get(position).getCrewName());
         holder.date1.setText(showModels.get(position).getDate1());
         holder.date2.setText(showModels.get(position).getDate2());
-        if (TextUtils.isEmpty(showModels.get(position).getImageURL())) {
-            (holder.image).setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_square));
-        } else {
-            try {
-                Picasso.get().load(showModels.get(position).getImageURL()).into(holder.image);
-            } catch (Exception e) {
-                (holder.image).setImageDrawable(ContextCompat.getDrawable(this.context, R.drawable.ic_square));
+            if(showModels.get(position).getImageUri() != null) {
+                Glide.with(context)
+                        .load(showModels.get(position).getImageUri())
+                        .error("Loading error")
+                        .into(holder.image);
             }
-
-        }
-
     }
 
     @Override
@@ -68,6 +72,37 @@ public class Show_RecyclerViewAdapter extends RecyclerView.Adapter<Show_Recycler
             return 0;
         }
 
+    }
+
+    public void deleteMoverItem(int position) {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        ShowModel deletedShow = showModels.get(position);
+        showModels.remove(position);
+        notifyItemRemoved(position);
+
+        assert user != null;
+        DatabaseReference showRef = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(user.getUid());
+
+        showRef.child("joined_shows").child(deletedShow.getAccess_code()).removeValue();
+    }
+
+    public void deleteManagerItem(int position) {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        ShowModel deletedShow = showModels.get(position);
+        showModels.remove(position);
+        notifyItemRemoved(position);
+
+        //TODO: Deal with the snackbar mess
+//        Snackbar.make(, deletedShow.getShowName(), Snackbar.LENGTH_LONG)
+
+        assert user != null;
+        DatabaseReference showRef = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(user.getUid());
+
+        showRef.child("owned_shows").child(deletedShow.getAccess_code()).removeValue();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

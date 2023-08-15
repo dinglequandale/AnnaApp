@@ -31,19 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        binding.appBarMain.addFab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, AddorEditShow.class);
-//                startActivity(intent);
-//            }
-//        });
         drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_profile, R.id.nav_slideshow)
+                R.id.nav_mover, R.id.nav_profile, R.id.nav_manager)
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -53,25 +46,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
-
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        // Handle navigation item clicks here
-//        int itemId = item.getItemId();
-//
-//        if (itemId == R.id.nav_home) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.nav_host_fragment_content_main, new HomeFragment()).commit();
-//        } else if (itemId == R.id.nav_profile) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.nav_host_fragment_content_main, new ProfileFragment()).commit();
-//        } else if (itemId == R.id.nav_slideshow) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.nav_host_fragment_content_main, new SlideshowFragment()).commit();
-//        }
-//
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
 
     @Override
     public void onBackPressed() {

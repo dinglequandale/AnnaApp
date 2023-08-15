@@ -4,13 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_600"
+    android:background="@color/purple_800"
     tools:context=".AddorEditShow">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="75dp"
+        app:cardBackgroundColor="@color/grey"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186"
+        android:layout_marginBottom="30dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helveticaroundedbold"
+                android:text="(Logo) Kaesma"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="313dp"
-        android:layout_height="474dp"
+        android:layout_height="400dp"
         app:cardBackgroundColor="@color/grey"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +57,21 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Show"
+                android:id="@+id/titleAddorEdit"
+                android:textSize="25dp"
+                android:fontFamily="@font/helveticaroundedbold"
+                app:layout_constraintBottom_toTopOf="@+id/edtShowName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/date2_add"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -41,6 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Show Name:"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/edtShowName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.068"
@@ -48,8 +96,38 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.952" />
 
+
+            <TextView
+                android:textColor="@color/purple_700"
+                android:id="@+id/asterisk1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:layout_marginHorizontal="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtShowName"
+                app:layout_constraintEnd_toStartOf="@+id/showName_add"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.947" />
+
+            <TextView
+                android:id="@+id/asterisk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="*"
+                android:textColor="@color/purple_700"
+                app:layout_constraintBottom_toBottomOf="@+id/crewName_add"
+                app:layout_constraintEnd_toStartOf="@+id/crewName_add"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/crewName_add"
+                app:layout_constraintVertical_bias="1.0" />
+
             <TextView
                 android:id="@+id/date1_add"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -63,16 +141,27 @@
 
             <TextView
                 android:id="@+id/txtURL"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
-                android:text="URL link:"
-                app:layout_constraintBottom_toBottomOf="@+id/edtURL"
+                android:text="Upload show image here (optional):"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/date2_add"
-                app:layout_constraintTop_toBottomOf="@+id/date2_add"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/date2_add" />
+
+            <TextView
+                android:id="@+id/txtImagePrev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image Preview:"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/displayShowImage"
+                app:layout_constraintEnd_toStartOf="@+id/displayShowImage"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/txtURL"
+                app:layout_constraintTop_toTopOf="@+id/displayShowImage" />
 
             <TextView
                 android:id="@+id/crewName_add"
@@ -80,25 +169,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
                 android:text="Crew Name:"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/edtCrewName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/showName_add"
                 app:layout_constraintTop_toBottomOf="@+id/showName_add"
                 app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/titleAddorEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/helveticaroundedbold"
-                android:text="Add a Show"
-                android:textSize="40dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.037" />
 
             <EditText
                 android:id="@+id/edtShowName"
@@ -113,7 +190,7 @@
                 app:layout_constraintHorizontal_bias="0.111"
                 app:layout_constraintStart_toEndOf="@+id/showName_add"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.295" />
+                app:layout_constraintVertical_bias="0.15" />
 
             <EditText
                 android:id="@+id/edtDate1"
@@ -141,19 +218,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/edtDate1" />
 
             <EditText
-                android:id="@+id/edtURL"
-                android:layout_width="195dp"
-                android:layout_height="44dp"
-                android:layout_marginTop="12dp"
-                android:ems="10"
-                android:hint="Enter image URL here"
-                android:inputType="text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.833"
-                app:layout_constraintStart_toEndOf="@+id/txtURL"
-                app:layout_constraintTop_toBottomOf="@+id/edtDate2" />
-
-            <EditText
                 android:id="@+id/edtCrewName"
                 android:layout_width="195dp"
                 android:layout_height="44dp"
@@ -165,6 +229,32 @@
                 app:layout_constraintHorizontal_bias="0.692"
                 app:layout_constraintStart_toEndOf="@+id/crewName_add"
                 app:layout_constraintTop_toBottomOf="@+id/edtShowName" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabUploadImage"
+                app:fabCustomSize="35dp"
+                android:backgroundTint="@color/purple_400"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/txtURL"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtURL"
+                app:layout_constraintTop_toTopOf="@+id/txtURL"
+                app:srcCompat="@drawable/ic_add" />
+
+            <ImageView
+                android:id="@+id/displayShowImage"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtURL"
+                app:layout_constraintVertical_bias="0.344"
+                app:srcCompat="@drawable/ic_rectangle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

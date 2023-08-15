@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.annaapp.LoginActivity;
-import com.example.annaapp.MainActivity;
 import com.example.annaapp.R;
 import com.example.annaapp.databinding.FragmentProfileBinding;
 import com.google.firebase.auth.FirebaseAuth;

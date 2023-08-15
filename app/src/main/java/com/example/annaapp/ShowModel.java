@@ -5,28 +5,28 @@ public class ShowModel {
     private String crewName;
     private String date1;
     private String date2;
-    private String imageURL;
+    private String imageUri;
 
-    private String uid;
+    private String access_code;
 
-    public ShowModel(String uid, String showName, String crewName, String date1, String date2, String imageURL) {
+    public ShowModel(String access_code, String showName, String crewName, String date1, String date2, String imageUri) {
         this.showName = showName;
         this.crewName = crewName;
         this.date1 = date1;
         this.date2 = date2;
-        this.imageURL = imageURL;
-        this.uid = uid;
+        this.imageUri = imageUri;
+        this.access_code = access_code;
     }
 
-    public ShowModel(String uid, String showName, String crewName, String date1, String date2) {
-        this.uid = uid;
+    public ShowModel(String access_code, String showName, String crewName, String date1, String date2) {
+        this.access_code = access_code;
         this.showName = showName;
         this.crewName = crewName;
         this.date1 = date1;
         this.date2 = date2;
     }
-    public String getUid() {
-        return uid;
+    public String getAccess_code() {
+        return access_code;
     }
 
     public CharSequence getShowName() {
@@ -45,7 +45,11 @@ public class ShowModel {
         return date2;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setAccess_code(String access_code) {
+        this.access_code = access_code;
     }
 }

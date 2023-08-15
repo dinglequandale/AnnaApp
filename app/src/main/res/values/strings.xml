@@ -86,4 +86,6 @@
     <string name="access_code">Access Code</string>
     <string name="join_a_show">Join a show</string>
     <string name="create_a_show">Create a show</string>
+    <string name="mover">Mover</string>
+    <string name="manager">Manager</string>
 </resources>
